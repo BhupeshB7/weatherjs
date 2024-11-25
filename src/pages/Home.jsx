@@ -34,7 +34,7 @@ const Home = ({ data }) => {
             {/* Sunrise Section */}
             <div className="text-center">
               <p className="text-md font-medium text-gray-800">Sunrise</p>
-              <p className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 drop-shadow-lg">
+              <p className="text-xl lg:text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 drop-shadow-lg">
                 {new Date(sunrise * 1000).toLocaleTimeString("en-US", {
                   hour: "2-digit",
                   minute: "2-digit",
@@ -45,7 +45,7 @@ const Home = ({ data }) => {
             {/* Sunset Section */}
             <div className="text-center">
               <p className="text-md font-medium text-gray-800">Sunset</p>
-              <p className="text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-red-500 to-pink-600 drop-shadow-lg">
+              <p className="text-xl lg:text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 via-red-500 to-pink-600 drop-shadow-lg">
                 {new Date(sunset * 1000).toLocaleTimeString("en-US", {
                   hour: "2-digit",
                   minute: "2-digit",

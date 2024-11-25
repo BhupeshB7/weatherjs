@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
+import { FaWind, FaTint } from "react-icons/fa"; // Import icons from react-icons
 
 const WeatherForecast = ({ data }) => {
   // Process API data into daily forecasts
@@ -14,6 +15,8 @@ const WeatherForecast = ({ data }) => {
         temp_max: forecast.main.temp_max,
         icon: forecast.weather[0].icon,
         condition: forecast.weather[0].description,
+        humidity: forecast.main.humidity,
+        wind_speed: forecast.wind.speed,
       };
     } else {
       acc[date].temp_min = Math.min(acc[date].temp_min, forecast.main.temp_min);
@@ -23,6 +26,7 @@ const WeatherForecast = ({ data }) => {
   }, {});
 
   const forecastData = Object.values(dailyForecasts);
+  console.log("dailyForecasts", dailyForecasts);
 
   // Animation Variants
   const cardVariants = {
@@ -68,13 +72,25 @@ const WeatherForecast = ({ data }) => {
                   className="w-12 h-12"
                 />
                 <h2 className="text-md font-bold">{weather.day}</h2>
-                <p className="text-xl font-medium">
-                  {Math.round(weather.temp_min)}°C -{" "}
+                <p className="text-sm">
+                  {Math.round(weather.temp_min)}°C -
                   {Math.round(weather.temp_max)}°C
                 </p>
                 <p className="text-sm uppercase tracking-wide text-gray-200">
                   {weather.condition}
                 </p>
+
+                {/* Wind Speed */}
+                <div className="flex items-center space-x-2 ">
+                  <FaWind className="text-xl" />
+                  <span>{Math.round(weather.wind_speed)} km/h</span>
+                </div>
+
+                {/* Humidity */}
+                <div className="flex items-center space-x-2 ">
+                  <FaTint className="text-xl" />
+                  <span>{weather.humidity}%</span>
+                </div>
               </motion.div>
             );
           })}
